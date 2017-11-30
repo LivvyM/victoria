@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="home_menu_size">24dp</dimen>
+
+    <dimen name="unit_2px">1dp</dimen>
+    <dimen name="unit_4px">2dp</dimen>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6"
+    android:gravity="center"
+    >
+
+    <ProgressBar
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        />
+
+    <TextView
+        android:id="@+id/mTextLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正在加载.."
+        android:layout_marginLeft="4dp"
+        android:textSize="14dp"
+        android:textColor="#999999"
+        />
+
+</LinearLayout>
