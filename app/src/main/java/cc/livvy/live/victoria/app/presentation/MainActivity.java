@@ -8,7 +8,7 @@ import android.widget.TabHost;
 
 import cc.livvy.live.victoria.R;
 import cc.livvy.live.victoria.base.BaseActivity;
-import cc.livvy.live.victoria.home.presentation.fragment.DiscoverFragment;
+import cc.livvy.live.victoria.home.presentation.fragment.HomeFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity {
             R.drawable.main_tab_home_selector
     };
 
-    private Class mFragmentArray[] = {DiscoverFragment.class, DiscoverFragment.class, DiscoverFragment.class, DiscoverFragment.class, DiscoverFragment.class};
+    private Class mFragmentArray[] = {HomeFragment.class, HomeFragment.class, HomeFragment.class, HomeFragment.class, HomeFragment.class};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
