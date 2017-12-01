@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 请求访问网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature
@@ -30,6 +33,11 @@
         </activity>
 
         <activity android:name=".app.presentation.CameraActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Full"
+            />
+
+        <activity android:name=".app.presentation.PlayActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Full"
             />

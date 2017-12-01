@@ -1,5 +1,6 @@
 package cc.livvy.live.victoria.home.presentation.fragment;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cc.livvy.live.victoria.R;
+import cc.livvy.live.victoria.app.presentation.PlayActivity;
 import cc.livvy.live.victoria.base.BaseFragment;
 import cc.livvy.widget.image.ImageViewUtils;
 
@@ -63,5 +65,11 @@ public class HomeFragment extends BaseFragment {
         ImageViewUtils.bindImageView(mImageCard3,"http://img.hb.aicdn.com/218c6ccf19e75bd6d30dec7272eb2bd63a62efc42927c-WL82Yg");
         ImageViewUtils.bindImageView(mImageCard4,"http://img.hb.aicdn.com/f220c8f9965253238c1e61871c51c003a4b2d2bf174be-GgqZJq");
 
+        mImageCard1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mActivity, PlayActivity.class));
+            }
+        });
     }
 }

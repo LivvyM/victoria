@@ -1,1 +1,1 @@
-include ':app', ':common', ':widget', ':live', ':gsyVideoPlayer'
+include ':app', ':common', ':widget', ':live', ':gsyVideoPlayer-x86_64', ':gsyVideoPlayer-x86', ':gsyVideoPlayer-java', ':gsyVideoPlayer-armv64', ':gsyVideoPlayer', ':gsyVideoPlayer-armv5', ':gsyVideoPlayer-armv7a'
