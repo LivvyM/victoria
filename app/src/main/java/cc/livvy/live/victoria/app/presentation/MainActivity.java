@@ -8,22 +8,21 @@ import android.widget.TabHost;
 
 import cc.livvy.live.victoria.R;
 import cc.livvy.live.victoria.base.BaseActivity;
-import cc.livvy.live.victoria.home.presentation.fragment.DiscoverFragment;
+import cc.livvy.live.victoria.home.presentation.fragment.HomeFragment;
 
 public class MainActivity extends BaseActivity {
 
     protected FragmentTabHost fragmentTabHost;
 
-    private String mTextTitle[] = {"home", "discover", "live", "message", "mine"};
+    private String mTextTitle[] = {"home", "discover", "message", "mine"};
     private int mDrawableSelector[] = {
-            R.drawable.main_tab_home_selector,
             R.drawable.main_tab_home_selector,
             R.drawable.main_tab_home_selector,
             R.drawable.main_tab_home_selector,
             R.drawable.main_tab_home_selector
     };
 
-    private Class mFragmentArray[] = {DiscoverFragment.class, DiscoverFragment.class, DiscoverFragment.class, DiscoverFragment.class, DiscoverFragment.class};
+    private Class mFragmentArray[] = {HomeFragment.class, HomeFragment.class, HomeFragment.class, HomeFragment.class};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +39,21 @@ public class MainActivity extends BaseActivity {
             fragmentTabHost.addTab(spec, mFragmentArray[i], null);
         }
         fragmentTabHost.getTabWidget().setDividerDrawable(null);
+
+        fragmentTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+            }
+        });
     }
 
     private View getView(int i) {
         View view = View.inflate(MainActivity.this, R.layout.tab_bottom_menu, null);
+//        if(i == 2){
+//            view = View.inflate(MainActivity.this, R.layout.tab_bottom_menu_live, null);
+//        }else{
+//
+//        }
         ImageView imageView = view.findViewById(R.id.mImageIcon);
         imageView.setImageResource(mDrawableSelector[i]);
         return view;
