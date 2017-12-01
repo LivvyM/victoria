@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import cc.livvy.live.victoria.R;
+import cc.livvy.live.victoria.base.BaseFragment;
+
 /**
  * Created by livvy on 17-12-1.
  */
