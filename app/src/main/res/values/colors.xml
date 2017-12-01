@@ -11,5 +11,10 @@
     <color name="colorBackground">#f0f0f0</color>
 
     <color name="colorWhite">#F9F9F9</color>
+
+    <color name="colorText333">#333333</color>
+    <color name="colorText666">#666666</color>
+    <color name="colorText999">#999999</color>
+    <color name="colorCCC">#cccccc</color>
     
 </resources>

@@ -9,6 +9,7 @@ import android.widget.TabHost;
 import cc.livvy.live.victoria.R;
 import cc.livvy.live.victoria.base.BaseActivity;
 import cc.livvy.live.victoria.home.presentation.fragment.HomeFragment;
+import cc.livvy.live.victoria.mine.presentation.fragment.MineFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -17,12 +18,12 @@ public class MainActivity extends BaseActivity {
     private String mTextTitle[] = {"home", "discover", "message", "mine"};
     private int mDrawableSelector[] = {
             R.drawable.main_tab_home_selector,
-            R.drawable.main_tab_home_selector,
-            R.drawable.main_tab_home_selector,
-            R.drawable.main_tab_home_selector
+            R.drawable.main_tab_discover_selector,
+            R.drawable.main_tab_message_selector,
+            R.drawable.main_tab_mine_selector
     };
 
-    private Class mFragmentArray[] = {HomeFragment.class, HomeFragment.class, HomeFragment.class, HomeFragment.class};
+    private Class mFragmentArray[] = {HomeFragment.class, HomeFragment.class, HomeFragment.class, MineFragment.class};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    //compile project(':gsyVideoPlayer-java')
+    //compile project(':gsyVideoPlayer-armv5')
+    //compile project(':gsyVideoPlayer-armv7a')
+    //compile project(':gsyVideoPlayer-armv64')
+    //compile project(':gsyVideoPlayer-x86')
+    //compile project(':gsyVideoPlayer-x86_64')
+
+    //更多配置版so，增加了concat,rtsp,mpeg，crypto
+    //compile project(':gsyVideoPlayer-ex_so')
+
+    compile "com.shuyu:gsyVideoPlayer-java:$rootProject.ext.gsyVideoVersion"
+    compile "com.shuyu:gsyVideoPlayer-armv5:$rootProject.ext.gsyVideoVersion"
+    compile "com.shuyu:gsyVideoPlayer-armv7a:$rootProject.ext.gsyVideoVersion"
+    compile "com.shuyu:gsyVideoPlayer-arm64:$rootProject.ext.gsyVideoVersion"
+    compile "com.shuyu:gsyVideoPlayer-x64:$rootProject.ext.gsyVideoVersion"
+    compile "com.shuyu:gsyVideoPlayer-x86:$rootProject.ext.gsyVideoVersion"
+
+    //更多配置版so，增加了concat,rtsp,mpeg，crypto
+    //compile "com.shuyu:gsyVideoPlayer-ex_so:$gsyVideoVersion"
+}
+

@@ -1,1 +1,1 @@
-include ':app', ':common', ':widget'
+include ':app', ':common', ':widget', ':live', ':gsyVideoPlayer'

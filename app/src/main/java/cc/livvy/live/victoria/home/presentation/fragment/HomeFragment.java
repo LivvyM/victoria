@@ -6,10 +6,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import cc.livvy.live.victoria.R;
 import cc.livvy.live.victoria.base.BaseFragment;
+import cc.livvy.widget.image.ImageViewUtils;
 
 /**
  * discover
@@ -48,5 +50,18 @@ public class HomeFragment extends BaseFragment {
     private void initView(View view) {
         TextView mTextTitle = view.findViewById(R.id.mTextTitle);
         mTextTitle.setTypeface(Typeface.createFromAsset(mActivity.getAssets(),"font/font_default.ttf"));
+
+        ImageView mImageBanner = view.findViewById(R.id.mImageBanner);
+        ImageViewUtils.bindImageView(mImageBanner,"http://img.hb.aicdn.com/361368b552300e465a5c43482934959b2c509b458a3b-YBd44R");
+
+        ImageView mImageCard1 = view.findViewById(R.id.mImageCard1);
+//        ImageView mImageCard2 = view.findViewById(R.id.mImageCard2);
+        ImageView mImageCard3 = view.findViewById(R.id.mImageCard3);
+        ImageView mImageCard4 = view.findViewById(R.id.mImageCard4);
+        ImageViewUtils.bindImageView(mImageCard1,"http://img.hb.aicdn.com/c254f95e04b4aac0d48e0f7d21440dc4d47d5648350ed-rbQmeD");
+//        ImageViewUtils.bindImageView(mImageCard2,"http://img.hb.aicdn.com/218c6ccf19e75bd6d30dec7272eb2bd63a62efc42927c-WL82Yg");
+        ImageViewUtils.bindImageView(mImageCard3,"http://img.hb.aicdn.com/218c6ccf19e75bd6d30dec7272eb2bd63a62efc42927c-WL82Yg");
+        ImageViewUtils.bindImageView(mImageCard4,"http://img.hb.aicdn.com/f220c8f9965253238c1e61871c51c003a4b2d2bf174be-GgqZJq");
+
     }
 }
