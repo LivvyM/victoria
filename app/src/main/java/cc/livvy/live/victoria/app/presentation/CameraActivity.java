@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.github.faucamp.simplertmp.RtmpHandler;
@@ -24,20 +24,22 @@ import java.io.IOException;
 import java.net.SocketException;
 
 import cc.livvy.live.victoria.R;
+import cc.livvy.widget.image.ImageViewUtils;
 
 /**
- *
  * Created by livvy on 2017/12/01.
  */
 
 public class CameraActivity extends Activity implements SrsEncodeHandler.SrsEncodeListener, RtmpHandler.RtmpListener, SrsRecordHandler.SrsRecordListener, View.OnClickListener {
 
-    private Button mPublishBtn;
     private Button mCameraSwitchBtn;
     private Button mEncoderBtn;
-    private EditText mRempUrlEt;
     private SrsPublisher mPublisher;
-    private String rtmpUrl;
+    private String rtmpUrl = "rtmp://192.168.90.55:1935/live/livestream";
+
+    private ImageView mImageStart;
+
+    private boolean isStart = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,11 +47,14 @@ public class CameraActivity extends Activity implements SrsEncodeHandler.SrsEnco
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_camera);
 
-        mPublishBtn =  findViewById(R.id.publish);
-        mCameraSwitchBtn =  findViewById(R.id.swCam);
-        mEncoderBtn =  findViewById(R.id.swEnc);
-        mRempUrlEt =  findViewById(R.id.url);
-        mPublishBtn.setOnClickListener(this);
+        ImageView mImageHeader = findViewById(R.id.mImageHeader);
+        ImageViewUtils.bindCircleImageView(mImageHeader, "http://img3.imgtn.bdimg.com/it/u=3067862065,1178074544&fm=27&gp=0.jpg");
+
+        mCameraSwitchBtn = findViewById(R.id.swCam);
+        mEncoderBtn = findViewById(R.id.swEnc);
+        mImageStart = findViewById(R.id.mImageStart);
+
+        mImageStart.setOnClickListener(this);
         mCameraSwitchBtn.setOnClickListener(this);
         mEncoderBtn.setOnClickListener(this);
 
@@ -75,26 +80,27 @@ public class CameraActivity extends Activity implements SrsEncodeHandler.SrsEnco
     public void onClick(View v) {
         switch (v.getId()) {
             //开始/停止推流
-            case R.id.publish:
-                if (mPublishBtn.getText().toString().contentEquals("开始")) {
-                    rtmpUrl = mRempUrlEt.getText().toString();
+            case R.id.mImageStart:
+                if (!isStart) {
+                    isStart = true;
                     if (TextUtils.isEmpty(rtmpUrl)) {
                         Toast.makeText(getApplicationContext(), "地址不能为空！", Toast.LENGTH_SHORT).show();
                     }
                     mPublisher.startPublish(rtmpUrl);
                     mPublisher.startCamera();
 
-                    if (mEncoderBtn.getText().toString().contentEquals("软编码")) {
-                        Toast.makeText(getApplicationContext(), "当前使用硬编码", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "当前使用软编码", Toast.LENGTH_SHORT).show();
-                    }
-                    mPublishBtn.setText("停止");
+//                    if (mEncoderBtn.getText().toString().contentEquals("软编码")) {
+//                        Toast.makeText(getApplicationContext(), "当前使用硬编码", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), "当前使用软编码", Toast.LENGTH_SHORT).show();
+//                    }
+                    mImageStart.setImageResource(R.drawable.ic_live_close);
                     mEncoderBtn.setEnabled(false);
-                } else if (mPublishBtn.getText().toString().contentEquals("停止")) {
+                } else {
+                    isStart = false;
                     mPublisher.stopPublish();
                     mPublisher.stopRecord();
-                    mPublishBtn.setText("开始");
+                    mImageStart.setImageResource(R.drawable.ic_live_start);
                     mEncoderBtn.setEnabled(true);
                 }
                 break;
@@ -140,7 +146,7 @@ public class CameraActivity extends Activity implements SrsEncodeHandler.SrsEnco
         mPublisher.stopEncode();
         mPublisher.stopRecord();
         mPublisher.setScreenOrientation(newConfig.orientation);
-        if (mPublishBtn.getText().toString().contentEquals("停止")) {
+        if (!isStart) {
             mPublisher.startEncode();
         }
         mPublisher.startCamera();
@@ -166,7 +172,8 @@ public class CameraActivity extends Activity implements SrsEncodeHandler.SrsEnco
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             mPublisher.stopPublish();
             mPublisher.stopRecord();
-            mPublishBtn.setText("开始");
+            isStart = false;
+            mImageStart.setImageResource(R.drawable.ic_live_start);
         } catch (Exception e1) {
             //
         }

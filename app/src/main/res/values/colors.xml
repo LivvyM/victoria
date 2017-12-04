@@ -16,5 +16,7 @@
     <color name="colorText666">#666666</color>
     <color name="colorText999">#999999</color>
     <color name="colorCCC">#cccccc</color>
+
+    <color name="colorLiveShadow">#60000000</color>
     
 </resources>
